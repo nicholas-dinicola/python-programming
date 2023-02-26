@@ -44,6 +44,17 @@ class LeakyReLU(ActivationFunction):
         return torch.where(x > 0, x, self.config["alpha"] * x)
 
 
+class ELU(ActivationFunction):
+
+    def forward(self, x):
+        return torch.where(x > 0, x, torch.exp(x)-1)
+
+class Swish(ActivationFunction):
+
+    def forward(self, x):
+        return  x * torch.sigmoid(x)
+
+
 if __name__ == "__manin__":
     x = -1 * 0 - 1
     print(x)
